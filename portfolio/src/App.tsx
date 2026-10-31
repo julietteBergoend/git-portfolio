@@ -1,37 +1,8 @@
+import { useEffect, useState } from 'react'
+import platyFace from './assets/platy-glasses-transparent.png'
+import platypusImage from './assets/platy-contours.svg'
+import { translations, type Language } from './translations'
 import './App.css'
-
-const projects = [
-  {
-    number: '01',
-    name: 'Goodside',
-    type: 'Brand & digital experience',
-    year: '2025',
-    description:
-      'A brighter identity and a more welcoming online home for a new kind of neighborhood market.',
-    visual: 'goodside',
-    label: 'A little more good, every day.',
-  },
-  {
-    number: '02',
-    name: 'Forma',
-    type: 'Product design',
-    year: '2024',
-    description:
-      'Making the everyday money stuff feel a little less like work and a lot more human.',
-    visual: 'forma',
-    label: 'Your money, in a good place.',
-  },
-  {
-    number: '03',
-    name: 'Slow Sunday',
-    type: 'Art direction & web',
-    year: '2024',
-    description:
-      'A thoughtful digital storefront for objects made to be kept, used, and loved.',
-    visual: 'sunday',
-    label: 'Make room for slow.',
-  },
-]
 
 function ArrowIcon() {
   return (
@@ -47,187 +18,374 @@ function ArrowIcon() {
 }
 
 function App() {
+  const [language, setLanguage] = useState<Language>('fr')
+  const [isLoading, setIsLoading] = useState(true)
+  const [isLeaving, setIsLeaving] = useState(false)
+  const copy = translations[language]
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches
+    const exitDelay = reducedMotion ? 100 : 1850
+    const fadeDuration = reducedMotion ? 180 : 500
+    let finishTimer = 0
+
+    document.body.classList.add('loading-active')
+    const exitTimer = window.setTimeout(() => {
+      setIsLeaving(true)
+      document.body.classList.remove('loading-active')
+      finishTimer = window.setTimeout(
+        () => setIsLoading(false),
+        fadeDuration,
+      )
+    }, exitDelay)
+
+    return () => {
+      window.clearTimeout(exitTimer)
+      window.clearTimeout(finishTimer)
+      document.body.classList.remove('loading-active')
+    }
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.lang = language
+    document.title = copy.page.title
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', copy.page.description)
+  }, [copy, language])
+
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) {
+      return
+    }
+
+    const revealElements = document.querySelectorAll<HTMLElement>('[data-reveal]')
+    document.documentElement.classList.add('motion-ready')
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('is-visible', entry.isIntersecting)
+        })
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
+    )
+
+    revealElements.forEach((element) => observer.observe(element))
+
+    return () => {
+      observer.disconnect()
+      document.documentElement.classList.remove('motion-ready')
+    }
+  }, [])
+
   return (
     <>
+      {isLoading && (
+        <div
+          className={`welcome-loader${isLeaving ? ' is-leaving' : ''}`}
+          role="status"
+          aria-live="polite"
+          aria-label={copy.loader.label}
+        >
+          <div className="loader-scene" aria-hidden="true">
+            <span className="loader-star loader-star-one">✦</span>
+            <span className="loader-star loader-star-two">✧</span>
+            <span className="loader-star loader-star-three">✦</span>
+            <img className="platypus-art" src={platypusImage} alt="" />
+          </div>
+          <p className="loader-caption">{copy.loader.caption}</p>
+          <p className="loader-subcaption">{copy.loader.subcaption}</p>
+          <span className="loader-progress" aria-hidden="true">
+            <span />
+          </span>
+        </div>
+      )}
+      <div
+        className={`page-shell${isLoading ? ' is-loading' : ''}`}
+        inert={isLoading}
+      >
       <header className="site-header">
-        <a className="wordmark" href="#home" aria-label="Your Name, home">
-          <span className="wordmark-mark">n.</span>
-          <span>Your Name</span>
+        <a
+          className="wordmark"
+          href="#home"
+          aria-label={copy.navigation.homeLabel}
+        >
+          <span className="wordmark-mark">
+            <img className="wordmark-platy" src={platyFace} alt="" />
+          </span>
+          <span>{copy.profileName}</span>
         </a>
-        <nav className="site-nav" aria-label="Main navigation">
-          <a href="#work">Work</a>
-          <a href="#about">About</a>
+        <nav className="site-nav" aria-label={copy.navigation.mainLabel}>
+          <a href="#expertise">{copy.navigation.expertise}</a>
+          <a href="#experience">{copy.navigation.experience}</a>
           <a className="nav-contact" href="#contact">
-            Say hello <span aria-hidden="true">↗</span>
+            {copy.navigation.contact} <span aria-hidden="true">↗</span>
           </a>
+          <button
+            type="button"
+            className="language-toggle"
+            onClick={() => setLanguage(language === 'fr' ? 'en' : 'fr')}
+            aria-label={copy.navigation.switchLanguage}
+            aria-pressed={language === 'en'}
+          >
+            {copy.navigation.languageButton}
+          </button>
         </nav>
       </header>
 
       <main>
-        <section className="hero section-wrap" id="home">
-          <div className="hero-copy">
-            <p className="eyebrow">
-              <span className="status-dot" />
-              Independent creative · Designer & developer
-            </p>
-            <h1>
-              Making the
-              <br />
-              internet feel
-              <br />
-              <span className="headline-last">
-                a little <em>more human.</em>
-              </span>
-            </h1>
-            <div className="hero-bottom">
-              <p className="hero-intro">
-                Thoughtful design and digital experiences for people doing
-                good things.
-              </p>
-              <a className="text-link" href="#work">
-                Take a look around <ArrowIcon />
-              </a>
+        <section className="profile-hero section-wrap" id="home">
+          <div className="profile-left">
+            <h1 className="profile-heading" data-reveal>{copy.profile.heading}</h1>
+            <div className="profile-card" data-reveal>
+              <div className="profile-facts">
+                <div className="profile-fact">
+                  <span>{copy.profile.operatorLabel}</span>
+                  <strong className="profile-operator">{copy.profileName}</strong>
+                </div>
+                <div className="profile-fact">
+                  <span>{copy.profile.roleLabel}</span>
+                  <strong className="profile-role">{copy.profile.role}</strong>
+                </div>
+                <div className="profile-fact">
+                  <span>{copy.profile.locationLabel}</span>
+                  <strong>{copy.place}</strong>
+                </div>
+                <div className="profile-fact profile-status-fact">
+                  <span>{copy.profile.statusLabel}</span>
+                  <strong>{copy.profile.status}</strong>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div className="hero-art" aria-label="Abstract illustration">
-            <div className="art-sun" />
-            <div className="art-orbit art-orbit-one" />
-            <div className="art-orbit art-orbit-two" />
-            <div className="art-flower" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <i />
+          <div className="profile-right">
+            <div className="profile-terminal" data-reveal>
+              <div className="terminal-titlebar">
+                <span aria-hidden="true">›_</span>
+                <span>{copy.profile.terminalTitle}</span>
+              </div>
+              <div className="terminal-content">
+                <div className="terminal-block">
+                  <p className="terminal-command">
+                    <span aria-hidden="true">➜</span> {copy.profile.whoamiCommand}
+                  </p>
+                  <p className="terminal-text">{copy.profile.description}</p>
+                </div>
+                <div className="terminal-block">
+                  <p className="terminal-command">
+                    <span aria-hidden="true">➜</span> {copy.profile.qualificationsCommand}
+                  </p>
+                  <p className="terminal-text terminal-mission">{copy.profile.mission}</p>
+                  <p className="terminal-subheading">{copy.profile.expertiseHeading}</p>
+                  <ul className="terminal-skills">
+                    {copy.skills.items.slice(0, 5).map((skill) => (
+                      <li key={skill.name}>{skill.name}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
-            <span className="art-caption">A practice in progress</span>
-            <span className="art-stamp">GOOD<br />THINGS<br />TAKE SHAPE</span>
-            <span className="art-sparkle" aria-hidden="true">✳</span>
-          </div>
-          <div className="hero-index">
-            <span>Scroll a little</span>
-            <span className="index-line" />
-            <span>01 — 03</span>
+            <div className="profile-stats" aria-label={copy.profile.qualificationsHeading}>
+              <article className="profile-stat">
+                <span className="profile-stat-icon" aria-hidden="true">⌘</span>
+                <p>{copy.profile.experienceStat}</p>
+                <strong>{copy.profile.experienceValue}</strong>
+              </article>
+              <article className="profile-stat">
+                <span className="profile-stat-icon" aria-hidden="true">‹/›</span>
+                <p>{copy.profile.projectsStat}</p>
+                <strong>{copy.profile.projectsValue}</strong>
+              </article>
+              <article className="profile-stat">
+                <span className="profile-stat-icon" aria-hidden="true">✦</span>
+                <p>{copy.profile.educationStat}</p>
+                <strong>{copy.profile.educationValue}</strong>
+              </article>
+            </div>
           </div>
         </section>
 
-        <section className="work-section section-wrap" id="work">
-          <div className="section-heading">
+        <section className="projects-section">
+          <div className="section-wrap projects-inner" id="expertise">
+            <div className="section-heading" data-reveal>
+              <div>
+                <p className="eyebrow">
+                  {copy.projects.eyebrow}
+                </p>
+                <h2>
+                  {copy.projects.heading}
+                  <br />
+                  <em>{copy.projects.headingEmphasis}</em>
+                </h2>
+              </div>
+              <p className="section-aside">
+                {copy.projects.aside}
+              </p>
+            </div>
+            <div className="project-list">
+              {copy.projects.entries.map((project) => {
+                const experience =
+                  copy.experience.entries[project.experienceIndex]
+
+                return (
+                  <article className="project" data-reveal key={project.number}>
+                    <div
+                      className={`project-visual ${project.tone}`}
+                      aria-label={`${project.name} — ${copy.projects.visualizationLabel}`}
+                      role="img"
+                    >
+                      <span className="project-symbol" aria-hidden="true">
+                        {project.symbol}
+                      </span>
+                      <span className="visual-number">{project.number}</span>
+                    </div>
+                    <div className="project-info">
+                      <p className="project-type">{project.category}</p>
+                      <h3>{project.name}</h3>
+                      <p className="project-description">{project.summary}</p>
+                      <ul
+                        className="project-skills"
+                        aria-label={copy.projects.skillsLabel}
+                      >
+                        {project.skills.map((skill) => (
+                          <li key={skill}>{skill}</li>
+                        ))}
+                      </ul>
+                      <details className="project-details">
+                        <summary>{copy.projects.experienceDetailsLabel}</summary>
+                        <p className="project-experience-role">
+                          {experience.role} · {experience.company} · {experience.period}
+                        </p>
+                        <ul>
+                          {experience.details.map((detail) => (
+                            <li key={detail}>{detail}</li>
+                          ))}
+                        </ul>
+                      </details>
+                    </div>
+                  </article>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="work-section section-wrap" id="experience">
+          <div className="section-heading" data-reveal>
             <div>
-              <p className="eyebrow">A few things I’ve made</p>
-              <h2>Selected work<span className="heading-period">.</span></h2>
+              <p className="eyebrow">
+                {copy.experience.eyebrow}
+              </p>
+              <h2>
+                {copy.experience.heading}
+                <br />
+                <em>{copy.experience.headingEmphasis}</em>
+              </h2>
             </div>
             <p className="section-aside">
-              A small collection of ideas brought to life, with lovely people.
+              {copy.experience.aside}
             </p>
           </div>
 
-          <div className="project-list">
-            {projects.map((project) => (
-              <article className="project" key={project.number}>
-                <div
-                  className={`project-visual ${project.visual}`}
-                  aria-label={`${project.name} project preview`}
-                  role="img"
-                >
-                  <div className="mock-browser">
-                    <div className="browser-bar">
-                      <span />
-                      <span />
-                      <span />
-                      <i>{project.name.toLowerCase()}.studio</i>
-                    </div>
-                    <div className="mock-content">
-                      <span className="mock-kicker">{project.type}</span>
-                      <span className="mock-title">{project.label}</span>
-                      <span className="mock-button">Take a look <b>↗</b></span>
-                    </div>
-                    <span className="mock-shape mock-shape-one" />
-                    <span className="mock-shape mock-shape-two" />
-                    <span className="mock-shape mock-shape-three" />
-                  </div>
-                  <span className="visual-number">{project.number}</span>
+          <div className="experience-list">
+            {copy.experience.entries.map((job, index) => (
+              <article className="experience-item" data-reveal key={job.company}>
+                <div className="experience-index">
+                  <span>0{index + 1}</span>
+                  <span className="timeline-line" />
                 </div>
-                <div className="project-info">
-                  <div className="project-title-line">
-                    <h3>{project.name}</h3>
-                    <span>{project.year}</span>
+                <div className="experience-main">
+                  <div className="experience-heading">
+                    <div>
+                      <p className="experience-period">
+                        {job.period}
+                      </p>
+                      <h3>{job.role}</h3>
+                      <p className="experience-company">
+                        {job.company} <span>·</span> {job.location}
+                      </p>
+                    </div>
+                    <span className="experience-arrow" aria-hidden="true">↗</span>
                   </div>
-                  <p className="project-type">{project.type}</p>
-                  <p className="project-description">{project.description}</p>
-                  <span className="project-note">
-                    Case study details coming soon
-                  </span>
+                  <p className="experience-summary">
+                    {job.summary}
+                  </p>
+                  <ul>
+                    {job.details.map((detail) => (
+                      <li key={detail}>{detail}</li>
+                    ))}
+                  </ul>
                 </div>
               </article>
             ))}
           </div>
-          <p className="work-footnote">
-            These are starter projects — swap them out for your own work.
-          </p>
         </section>
 
-        <section className="about-section" id="about">
-          <div className="about-inner section-wrap">
-            <div className="about-label">
-              <span className="about-star" aria-hidden="true">✳</span>
-              <p className="eyebrow">A little about me</p>
-            </div>
-            <div className="about-copy">
-              <h2>
-                Curious by nature.
-                <br />
-                <em>Intentional</em> by design.
-              </h2>
-              <p>
-                I’m a creative working at the intersection of thoughtful
-                design and useful technology. I love the early questions, the
-                tiny details, and making complicated things feel simple.
+        <section className="publication-section">
+          <div className="publication-inner section-wrap" data-reveal>
+            <span className="publication-mark" aria-hidden="true">“</span>
+            <div>
+              <p className="eyebrow">{copy.publication.eyebrow}</p>
+              <h2>{copy.publication.title}</h2>
+              <p className="publication-meta">
+                {copy.publication.authors} <span>·</span> {copy.publication.venue}
               </p>
-              <p>
-                Good work happens when we make it together. If you have a
-                thoughtful project or a half-formed idea, I’d love to hear
-                about it.
-              </p>
-              <a className="text-link" href="#contact">
-                Let’s work together <ArrowIcon />
-              </a>
+              <p className="publication-summary">{copy.publication.summary}</p>
             </div>
-            <div className="about-note">
-              <span>Currently into</span>
-              <p>Long walks, good type, and ideas that make life a little nicer.</p>
-              <span className="note-star" aria-hidden="true">✳</span>
-            </div>
+            <a
+              className="publication-link"
+              href={copy.publication.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {copy.publication.link} <ArrowIcon />
+            </a>
           </div>
         </section>
 
-        <section className="contact-section section-wrap" id="contact">
-          <p className="eyebrow">Have something in mind?</p>
+        <section className="contact-section section-wrap" id="contact" data-reveal>
+          <p className="eyebrow">
+            {copy.contact.eyebrow}
+          </p>
           <h2>
-            Let’s make
-            <br />
-            <em>it matter.</em>
+            {copy.contact.heading}
           </h2>
-          <a className="contact-link" href="mailto:your.email@example.com">
-            your.email@example.com <ArrowIcon />
-          </a>
+          <p className="contact-intro">{copy.contact.intro}</p>
+          <div className="contact-links">
+            <a className="contact-link" href={`mailto:${copy.contact.email}`}>
+              {copy.contact.email} <ArrowIcon />
+            </a>
+            <a
+              className="contact-link"
+              href={copy.contact.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {copy.contact.github} <ArrowIcon />
+            </a>
+          </div>
           <span className="contact-doodle" aria-hidden="true">✳</span>
         </section>
       </main>
 
       <footer className="site-footer section-wrap">
         <a className="wordmark footer-wordmark" href="#home">
-          <span className="wordmark-mark">n.</span>
-          <span>Your Name</span>
+          <span className="wordmark-mark">
+            <img className="wordmark-platy" src={platyFace} alt="" />
+          </span>
+          <span>{copy.profileName}</span>
         </a>
-        <p>Thoughtfully made, wherever you are. © {new Date().getFullYear()}</p>
+        <p>
+          {copy.place} <span>·</span> {copy.footer.copyright}{' '}
+          {new Date().getFullYear()}
+        </p>
         <a href="#home" className="back-to-top">
-          Back to top ↑
+          {copy.footer.backToTop}
         </a>
       </footer>
+      </div>
     </>
   )
 }
