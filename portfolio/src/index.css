@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Oxanium:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  color: #eadfff;
+  background: #10091d;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --paper: #10091d;
+  --ink: #eadfff;
+  --muted: #aa96c8;
+  --line: #39294e;
+  --accent: #c9a7ff;
+  --accent-bright: #e0c3ff;
+  --neon: #cf76ff;
+  --cyan: #75e7ff;
+  --panel: #1b102b;
+  --panel-light: #241536;
+  --display: 'Oxanium', 'Arial Narrow', sans-serif;
+  --serif: 'Oxanium', 'Arial Narrow', sans-serif;
+  --mono: 'DM Mono', monospace;
+
+  font-optical-sizing: auto;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(ellipse at 82% 7%, #572a7c29 0, transparent 38%),
+    radial-gradient(ellipse at 12% 40%, #40235a1b 0, transparent 33%);
+  background-attachment: fixed;
+}
+
+body,
+button,
+a {
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+}
+
+button,
+a {
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 5px;
+}
+
+::selection {
+  color: #13091e;
+  background: var(--cyan);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
