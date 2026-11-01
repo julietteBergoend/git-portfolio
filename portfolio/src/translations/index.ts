@@ -87,8 +87,10 @@ const fr = {
           'Outils d’annotation et méthodes de traitement automatique de séries télévisées.',
         details: [
           'Création d’interfaces d’annotation avec Prodigy.',
+          'Nettoyage du corpus audio et texte, structuration des dialogues et annotation des interlocuteurs et entités.',
+          'Reconnaissance de visages sur des passages vidéo pour améliorer l\'outil d\'annotation',
           'Scripts Python pour repérer les anomalies et annoter les interlocuteurs et entités.',
-          'Recherche de modèles pour annoter automatiquement des corpus audio et textuels.',
+          'Recherche de modèles pour reconnaître automatiquement les entités dans les corpus audio et textuels.',
         ],
       },
       {
@@ -114,6 +116,7 @@ const fr = {
     headingEmphasis: 'et réalisations',
     aside: 'Projets issus de mes expériences professionnelles',
     visualizationLabel: 'visualisation abstraite',
+    dialogueVisualizationLabel: 'schéma du locuteur et de son destinataire',
     skillsLabel: 'Technologies et compétences',
     experienceDetailsLabel: 'Voir les détails de cette expérience',
     entries: [
@@ -131,15 +134,18 @@ const fr = {
       {
         number: '02',
         name: 'Annotation de séries TV',
-        category: 'TAL · Dialogue · Données',
+        category: 'TAL · Dialogue · Data collection · Reconnaissance d’entités',
         summary:
-          'Outils d’annotation et scripts Python pour explorer les dialogues, repérer des anomalies et structurer les échanges.',
+          'Outils d’annotation et scripts Python pour explorer les dialogues, repérer des anomalies et structurer les échanges, dans un corpus de séries télévisées réunissant 1 638 épisodes, 7,584 millions de tokens et 399,4 d\'heures',
         skills: [
           'Prodigy',
           'Python',
-          'TensorFlow',
+          'Tensorflow',
           'Annotation de texte',
           'Entity linking',
+          'Adressees',
+          'SpaCy',
+          'Flair'
         ],
         experienceIndex: 1,
         tone: 'project-magenta',
@@ -311,8 +317,10 @@ const en: Translation = {
           'Annotation tools and natural-language processing for television dialogue.',
         details: [
           'Built annotation interfaces with Prodigy.',
+          'Cleaned the audio and text corpus, structured dialogues, and annotated addressees and entities.',
+          'Used facial recognition on video segments to improve the annotation tool.',
           'Wrote Python scripts to detect text anomalies and annotate addressees and entities.',
-          'Researched models for automatic annotation of audio and text corpora.',
+          'Researched models for automatically recognizing entities in audio and text corpora.',
         ],
       },
       {
@@ -338,6 +346,7 @@ const en: Translation = {
     headingEmphasis: 'Thoughtful solutions.',
     aside: 'A few areas and outcomes drawn from my experience.',
     visualizationLabel: 'abstract visualization',
+    dialogueVisualizationLabel: 'diagram of the speaker and addressee',
     skillsLabel: 'Tools and skills',
     experienceDetailsLabel: 'View experience details',
     entries: [
@@ -362,10 +371,19 @@ const en: Translation = {
       {
         number: '02',
         name: 'TV series annotation',
-        category: 'NLP · Dialogue · Data',
+        category: 'NLP · Dialogue · Data collection · Entity recognition',
         summary:
-          'Annotation tools and Python scripts to explore dialogue, detect anomalies, and structure conversations.',
-        skills: ['Prodigy', 'Python', 'TensorFlow', 'Text annotation', 'Entity linking'],
+          'Annotation tools and Python scripts to explore dialogue, detect anomalies, and structure conversations across a TV-series corpus of 1,638 episodes, 7.584 million tokens, and 399.4 hours.',
+        skills: [
+          'Prodigy',
+          'Python',
+          'TensorFlow',
+          'Text annotation',
+          'Entity linking',
+          'Addressees',
+          'spaCy',
+          'Flair',
+        ],
         experienceIndex: 1,
         tone: 'project-magenta',
         symbol: '“ ”',

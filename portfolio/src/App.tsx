@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import dialogueAddressing from './assets/dialogue-addressing.svg'
 import platyFace from './assets/platy-glasses-transparent.png'
 import platypusImage from './assets/platy-contours.svg'
 import { translations, type Language } from './translations'
@@ -246,8 +247,8 @@ function App() {
                 return (
                   <article className="project" data-reveal key={project.number}>
                     <div
-                      className={`project-visual ${project.tone}${project.number === '01' ? ' project-wavelet' : ''}`}
-                      aria-label={`${project.name} — ${copy.projects.visualizationLabel}`}
+                      className={`project-visual ${project.tone}${project.number === '01' ? ' project-wavelet' : ''}${project.number === '02' ? ' project-dialogue' : ''}`}
+                      aria-label={`${project.name} — ${project.number === '02' ? copy.projects.dialogueVisualizationLabel : copy.projects.visualizationLabel}`}
                       role="img"
                     >
                       {project.number === '01' ? (
@@ -326,6 +327,8 @@ function App() {
                           <text className="cwt-label" x="90" y="56">CONTINUOUS WAVELET TRANSFORM</text>
                           <text className="cwt-number" x="735" y="266">{project.number}</text>
                         </svg>
+                      ) : project.number === '02' ? (
+                        <img className="dialogue-diagram" src={dialogueAddressing} alt="" />
                       ) : (
                         <>
                           <span className="project-symbol" aria-hidden="true">
@@ -344,11 +347,16 @@ function App() {
                         aria-label={copy.projects.skillsLabel}
                       >
                         {project.skills.map((skill) => {
+                          const normalizedSkill = skill.toLowerCase()
                           const isNeonSkill =
-                            project.number === '01' &&
-                            ['python', 'keras', 'tensorflow'].includes(
-                              skill.toLowerCase(),
-                            )
+                            (project.number === '01' &&
+                              ['python', 'keras', 'tensorflow'].includes(
+                                normalizedSkill,
+                              )) ||
+                            (project.number === '02' &&
+                              ['python', 'spacy', 'flair', 'tensorflow'].includes(
+                                normalizedSkill,
+                              ))
 
                           return (
                             <li

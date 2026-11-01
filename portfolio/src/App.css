@@ -1971,6 +1971,20 @@ body.loading-active {
   display: none;
 }
 
+.project-dialogue::before,
+.project-dialogue::after {
+  display: none;
+}
+
+.dialogue-diagram {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(100%, 800px);
+  height: auto;
+  max-height: 300px;
+}
+
 .cwt-chart {
   position: absolute;
   inset: 0;
