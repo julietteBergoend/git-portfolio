@@ -343,9 +343,22 @@ function App() {
                         className="project-skills"
                         aria-label={copy.projects.skillsLabel}
                       >
-                        {project.skills.map((skill) => (
-                          <li key={skill}>{skill}</li>
-                        ))}
+                        {project.skills.map((skill) => {
+                          const isNeonSkill =
+                            project.number === '01' &&
+                            ['python', 'keras', 'tensorflow'].includes(
+                              skill.toLowerCase(),
+                            )
+
+                          return (
+                            <li
+                              className={isNeonSkill ? 'project-skill-neon' : undefined}
+                              key={skill}
+                            >
+                              {skill}
+                            </li>
+                          )
+                        })}
                       </ul>
                       <details className="project-details">
                         <summary>{copy.projects.experienceDetailsLabel}</summary>

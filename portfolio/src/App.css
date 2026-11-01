@@ -516,6 +516,7 @@
 .project-visual {
   position: relative;
   display: grid;
+  align-self: start;
   min-height: 238px;
   overflow: hidden;
   place-items: center;
@@ -2091,6 +2092,13 @@ body.loading-active {
 .project:hover .project-skills li {
   border-color: #8d65ae;
   background: #bd75ff12;
+}
+
+.project-skills li.project-skill-neon {
+  border-color: #21dcff;
+  background: #21dcff14;
+  color: #75e7ff;
+  box-shadow: 0 0 12px #21dcff30, inset 0 0 10px #21dcff12;
 }
 
 .project-skills li:hover {
