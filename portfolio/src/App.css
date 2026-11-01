@@ -2391,8 +2391,14 @@ button {
 
 @media (max-width: 620px) {
   .site-nav {
-    gap: 8px 12px;
-    font-size: 12px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 2px;
+    font-size: clamp(8px, 2.5vw, 11px);
+  }
+
+  .site-nav > a:not(.nav-contact) {
+    white-space: nowrap;
   }
 
   .skills-toolkit {
@@ -2404,7 +2410,19 @@ button {
   }
 
   .nav-contact {
-    padding: 8px 6px;
+    flex: 0 0 auto;
+    padding: 5px 3px;
+    white-space: nowrap;
+  }
+
+  .nav-contact span {
+    margin-left: 1px;
+  }
+
+  .language-toggle {
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
   }
 
   .hero {
