@@ -49,6 +49,20 @@ function App() {
   }, [])
 
   useEffect(() => {
+    if (isLoading) {
+      return
+    }
+
+    const navigation = performance.getEntriesByType(
+      'navigation',
+    )[0] as PerformanceNavigationTiming | undefined
+
+    if (navigation?.type === 'reload') {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
+  }, [isLoading])
+
+  useEffect(() => {
     document.documentElement.lang = language
     document.title = copy.page.title
     document
