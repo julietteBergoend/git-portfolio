@@ -189,12 +189,13 @@
 }
 
 .arrow-icon {
+  display: inline-block;
+  flex: 0 0 auto;
   width: 17px;
   height: 17px;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.5;
+  background-color: currentColor;
+  mask: url('./assets/arrow.svg') center / contain no-repeat;
+  -webkit-mask: url('./assets/arrow.svg') center / contain no-repeat;
 }
 
 .hero-art {
@@ -524,59 +525,6 @@
   min-height: 238px;
   overflow: hidden;
   place-items: center;
-}
-
-.project-green {
-  background: #e2e8d2;
-}
-
-.project-peach {
-  background: #ead9cd;
-}
-
-.project-lavender {
-  background: #dedfe4;
-}
-
-.project-symbol {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  width: 110px;
-  height: 110px;
-  place-items: center;
-  border: 1px solid #24231f72;
-  border-radius: 50%;
-  background: #f9f8f45c;
-  font-family: var(--serif);
-  font-size: 43px;
-  font-style: italic;
-  transition: transform 280ms ease;
-}
-
-.project:hover .project-symbol {
-  transform: rotate(-12deg) scale(1.05);
-}
-
-.project-green .project-symbol {
-  color: #566a25;
-}
-
-.project-peach .project-symbol {
-  color: #975e49;
-}
-
-.project-lavender .project-symbol {
-  color: #5b627c;
-}
-
-.visual-number {
-  position: absolute;
-  right: 15px;
-  bottom: 13px;
-  color: #24231f9c;
-  font-family: var(--mono);
-  font-size: 12px;
 }
 
 .project-info {
@@ -1372,12 +1320,6 @@
     min-height: min(68vw, 300px);
   }
 
-  .project-symbol {
-    width: 100px;
-    height: 100px;
-    font-size: 38px;
-  }
-
   .profile-hero {
     grid-template-columns: 1fr;
     gap: 38px;
@@ -2092,7 +2034,7 @@ body.loading-active {
 .project-wavelet {
   min-height: 330px;
   color: var(--cyan);
-  background: #090812;
+  background: radial-gradient(ellipse at center, #46245d, #1a1027 72%);
 }
 
 .project-wavelet::before,
@@ -2133,70 +2075,6 @@ body.loading-active {
   inset: 0;
   width: 100%;
   height: 100%;
-}
-
-.cwt-grid {
-  fill: none;
-  stroke: #bd75ff26;
-  stroke-width: 1;
-}
-
-.cwt-energy-glow {
-  opacity: 0.58;
-}
-
-.cwt-energy-ridge {
-  filter: drop-shadow(0 0 7px #54e6ffbd);
-}
-
-.cwt-axis-labels,
-.cwt-label,
-.cwt-number {
-  fill: #b7a3d4;
-  font-family: var(--mono);
-  font-size: 13px;
-}
-
-.cwt-axis-labels text {
-  text-anchor: middle;
-}
-
-.cwt-axis-labels text:last-child {
-  fill: #75e7ff;
-  font-size: 12px;
-}
-
-.cwt-label {
-  fill: #e0c3ff;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-.cwt-number {
-  fill: #c3a9dc;
-  text-anchor: end;
-}
-
-.project-symbol {
-  width: 105px;
-  height: 105px;
-  border-color: currentColor;
-  background: #170c2480;
-  color: inherit;
-  font-family: var(--display);
-  font-size: 40px;
-  font-style: normal;
-  text-shadow: 0 0 18px currentColor;
-  box-shadow: 0 0 23px color-mix(in srgb, currentColor 32%, transparent), inset 0 0 25px #c98bff20;
-}
-
-.project:hover .project-symbol {
-  transform: rotate(-8deg) scale(1.09);
-  box-shadow: 0 0 33px color-mix(in srgb, currentColor 48%, transparent), inset 0 0 32px #c98bff30;
-}
-
-.visual-number {
-  color: #c3a9dc;
 }
 
 .project-info {
@@ -2497,7 +2375,6 @@ button {
   }
 
   .project,
-  .project-symbol,
   .experience-item,
   .experience-arrow,
   .text-link,

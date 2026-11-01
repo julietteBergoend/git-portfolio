@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="cwt-background" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#321b49"/>
+      <stop offset="1" stop-color="#1a1027"/>
+    </linearGradient>
+    <linearGradient id="cwt-energy" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7b3cff"/>
+      <stop offset=".35" stop-color="#21dcff"/>
+      <stop offset=".62" stop-color="#73f5a2"/>
+      <stop offset=".82" stop-color="#ffe06b"/>
+      <stop offset="1" stop-color="#ff8b45"/>
+    </linearGradient>
+    <filter id="cwt-glow" x="-20%" y="-30%" width="140%" height="160%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <clipPath id="cwt-plot-clip">
+      <rect x="76" y="34" width="684" height="246"/>
+    </clipPath>
+    <style>
+      .grid { fill: none; stroke: #bd75ff26; stroke-width: 1; }
+      .energy-glow { opacity: .58; }
+      .energy-ridge { filter: drop-shadow(0 0 7px #54e6ffbd); }
+      .axis-labels, .chart-label, .chart-number {
+        fill: #b7a3d4;
+        font-family: "DM Mono", monospace;
+        font-size: 13px;
+      }
+      .axis-labels text { text-anchor: middle; }
+      .axis-labels text:last-child { fill: #75e7ff; font-size: 12px; }
+      .chart-label { fill: #e0c3ff; font-size: 12px; letter-spacing: 1px; }
+      .chart-number { fill: #c3a9dc; text-anchor: end; }
+    </style>
+  </defs>
+  <rect x="76" y="34" width="684" height="246" fill="url(#cwt-background)"/>
+  <g class="grid">
+    <path d="M76 34H760 M76 75H760 M76 116H760 M76 157H760 M76 198H760 M76 239H760 M76 280H760"/>
+    <path d="M76 34V280 M213 34V280 M350 34V280 M487 34V280 M624 34V280 M760 34V280"/>
+  </g>
+  <g clip-path="url(#cwt-plot-clip)">
+    <path
+      class="energy-glow"
+      d="M76 203 C96 190 104 146 119 167 S145 221 162 188 183 122 199 154 220 222 239 186 260 126 275 163 300 225 319 177 340 117 354 151 378 220 395 183 413 136 430 170 454 225 474 182 492 106 506 145 529 214 546 178 563 127 582 161 602 211 619 174 638 111 652 149 672 212 688 169 708 126 727 160 744 195 760 171"
+      fill="none"
+      stroke="url(#cwt-energy)"
+      stroke-width="30"
+      filter="url(#cwt-glow)"
+    />
+    <path
+      class="energy-ridge"
+      d="M76 203 C96 190 104 146 119 167 S145 221 162 188 183 122 199 154 220 222 239 186 260 126 275 163 300 225 319 177 340 117 354 151 378 220 395 183 413 136 430 170 454 225 474 182 492 106 506 145 529 214 546 178 563 127 582 161 602 211 619 174 638 111 652 149 672 212 688 169 708 126 727 160 744 195 760 171"
+      fill="none"
+      stroke="url(#cwt-energy)"
+      stroke-width="13"
+    />
+    <path
+      d="M76 237 C115 226 127 207 151 219 S190 248 218 225 251 197 279 220 315 246 343 215 381 192 411 217 444 242 474 216 512 184 539 209 574 243 604 215 640 191 671 216 718 238 760 205"
+      fill="none"
+      stroke="#7b4cff"
+      stroke-width="18"
+      opacity=".56"
+      filter="url(#cwt-glow)"
+    />
+    <path
+      d="M83 171V248 M94 152V227 M108 178V242 M127 130V225 M145 175V260 M170 166V234 M189 109V222 M210 151V253 M232 181V239 M252 137V224 M273 154V245 M296 190V258 M321 136V220 M344 109V237 M367 162V254 M389 188V244 M413 133V224 M438 162V254 M460 194V261 M483 145V223 M505 95V232 M529 153V246 M550 182V253 M575 123V224 M598 168V247 M620 185V261 M644 108V229 M666 147V249 M690 170V244 M715 129V229 M741 165V245"
+      fill="none"
+      stroke="#a78bff"
+      stroke-width="2"
+      opacity=".48"
+    />
+  </g>
+  <g class="axis-labels">
+    <text x="76" y="302">0</text>
+    <text x="410" y="302">TIME</text>
+    <text x="748" y="302">10s</text>
+    <text x="65" y="39">256</text>
+    <text x="65" y="120">16</text>
+    <text x="65" y="202">4</text>
+    <text x="65" y="280">1</text>
+    <text transform="translate(22 195) rotate(-90)">FREQUENCY (Hz)</text>
+  </g>
+  <text class="chart-label" x="90" y="56">CONTINUOUS WAVELET TRANSFORM</text>
+  <text class="chart-number" x="735" y="266">01</text>
+</svg>

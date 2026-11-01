@@ -133,7 +133,6 @@ const fr = {
         skills: ['Python', 'Convolutional neural networks', 'Tensorflow', 'Keras','Traitement du signal', 'Traitement de la parole'],
         experienceIndex: 2,
         tone: 'project-cyan',
-        symbol: '〰',
       },
       {
         number: '02',
@@ -154,7 +153,6 @@ const fr = {
         ],
         experienceIndex: 1,
         tone: 'project-magenta',
-        symbol: '“ ”',
       },
       {
         number: '03',
@@ -175,7 +173,6 @@ const fr = {
         ],
         experienceIndex: 0,
         tone: 'project-violet',
-        symbol: '⌘',
       },
     ],
   },
@@ -186,8 +183,8 @@ const fr = {
     items: [
       { name: 'Python', level: 'Expert' },
       { name: 'React', level: 'Intermédiaire' },
-      { name: 'HTML · CSS · Tailwind', level: 'Intermédiaire' },
-      { name: 'Java', level: 'Débutant' },
+      { name: 'Tailwind', level: 'Intermédiaire' },
+      { name: 'Docker', level: 'Débutant' },
       { name: 'Git · GitHub · Bitbucket', level: 'Expert' },
       { name: 'JIRA · Linux', level: 'Expert' },
       { name: 'Jenkins', level: 'Avancé' },
@@ -428,7 +425,6 @@ const en: Translation = {
         ],
         experienceIndex: 2,
         tone: 'project-cyan',
-        symbol: '〰',
       },
       {
         number: '02',
@@ -449,7 +445,6 @@ const en: Translation = {
         ],
         experienceIndex: 1,
         tone: 'project-magenta',
-        symbol: '“ ”',
       },
       {
         number: '03',
@@ -470,7 +465,6 @@ const en: Translation = {
         ],
         experienceIndex: 0,
         tone: 'project-violet',
-        symbol: '⌘',
       },
     ],
   },
@@ -481,8 +475,8 @@ const en: Translation = {
     items: [
       { name: 'Python', level: 'Expert' },
       { name: 'React', level: 'Intermediate' },
-      { name: 'HTML · CSS · Tailwind', level: 'Intermediate' },
-      { name: 'Java', level: 'Beginner' },
+      { name: 'Tailwind', level: 'Intermediate' },
+      { name: 'Docker', level: 'Beginner' },
       { name: 'Git · GitHub · Bitbucket', level: 'Expert' },
       { name: 'JIRA · Linux', level: 'Expert' },
       { name: 'Jenkins', level: 'Advanced' },
