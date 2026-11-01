@@ -585,13 +585,13 @@
   position: relative;
   overflow: hidden;
   flex: 1;
-  min-height: 320px;
+  min-height: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 16px 30px;
+  gap: 4px;
+  padding: 12px 24px;
   border: 1px solid #49345c;
   border-radius: 5px;
   background:
@@ -673,7 +673,7 @@
   display: grid;
   min-width: 0;
   grid-template-rows: 1fr auto;
-  gap: 22px;
+  gap: 14px;
 }
 
 .profile-terminal {
@@ -689,7 +689,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  min-height: 40px;
+  min-height: 36px;
   padding: 0 16px;
   border-bottom: 1px solid #343438;
   background: #252528;
@@ -705,12 +705,12 @@
 
 .terminal-content {
   display: grid;
-  gap: 15px;
-  padding: 17px 22px 18px;
+  gap: 10px;
+  padding: 13px 18px 14px;
 }
 
 .terminal-command {
-  margin: 0 0 13px;
+  margin: 0 0 8px;
   color: #d34bff;
   font-family: var(--mono);
   font-size: 14px;
@@ -727,7 +727,7 @@
   color: #d2d0d9;
   font-family: var(--mono);
   font-size: 14px;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 .profile-platy-icon {
@@ -744,7 +744,7 @@
 }
 
 .terminal-subheading {
-  margin: 16px 0 9px;
+  margin: 10px 0 7px;
   color: #e6d9f4;
   font-family: var(--mono);
   font-size: 12px;
@@ -775,7 +775,7 @@
 
 .profile-stat {
   min-width: 0;
-  padding: 12px 14px;
+  padding: 8px 12px;
   border: 1px solid #392a4b;
   border-radius: 7px;
   background: #1a1125;
@@ -1328,8 +1328,8 @@
   }
 
   .profile-card {
-    min-height: 280px;
-    padding: 12px 20px;
+    min-height: 240px;
+    padding: 10px 16px;
   }
 
   .profile-fact {
@@ -1354,7 +1354,7 @@
   }
 
   .terminal-content {
-    padding: 17px 15px;
+    padding: 12px 15px;
   }
 
   .terminal-text {
