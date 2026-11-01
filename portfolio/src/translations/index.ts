@@ -17,12 +17,12 @@ const fr = {
     statusLabel: 'Statut',
     status: 'Disponible',
     description:
-      'Ingénieure logiciel spécialisée en Python, React et traitement du langage. Je transforme des besoins complexes en applications fiables, de la recherche au déploiement.',
+      'Ingénieure logiciel full-stack spécialisée en Python, j\'ai commencé ma carrière dans la recherche sur le traitement de la parole, puis me suis tournée vers le développement d\'applications embarquées. J\'aime voir les idées se transformer en solutions concrètes, et l\'apprentissage constant que ce métier m\'apporte quotidiennement. J\'adore relever des défis et mettre ma détermination à l\'épreuve.',
     mission:
-      'Relier recherche et produit pour créer des outils concrets, utiles et robustes.',
+      'Transformer les exigences commerciales complexes en solutions techniques robustes. Actuellement concentrée sur les Microservices et les Applications Embarquées.',
     terminalTitle: 'profil_utilisateur.log',
     whoamiCommand: 'whoami',
-    qualificationsCommand: 'cat qualifications.txt',
+    qualificationsCommand: 'cat mission.txt',
     expertiseHeading: 'Domaines clés',
     experienceStat: 'Expérience',
     experienceValue: '5+ ans',
@@ -99,8 +99,11 @@ const fr = {
         summary:
           'Traitement du langage et reconnaissance vocale appliqués aux essais en vol.',
         details: [
-          'Étude des méthodes de reconnaissance de la parole et collecte de corpus.',
-          'Traitement du signal audio et développement d’un système de reconnaissance vocale en Python.',
+          'Étude de l\'état de l\'art des méthodes de reconnaissance de la parole : créer un système aussi pointu que les modèles existants. Le modèle est à créer de zéro afin de respecter la confidentialité des données d\'essais en vol.',
+          'Collecte du corpus audio : récupération de centaines d\'heures de données audio open source et retranscription manuelle d\'audio d\'essais en vol.',
+          'Traitement du signal : normalisation, filtrage, extraction de caractéristiques et préparation des données pour l\'entraînement du modèle.',
+          'Test de différents modèles de deep learning pour la reconnaissance vocale, en utilisant des architectures CNN (Convolutional Neural Networks) et RNN (Recurrent Neural Networks).',
+          'Développement d’un système de reconnaissance vocale en Python.',
         ],
       },
     ],
@@ -116,11 +119,11 @@ const fr = {
     entries: [
       {
         number: '01',
-        name: 'Reconnaissance vocale aéronautique',
+        name: 'Reconnaissance vocale en aéronautique',
         category: 'Essais en vol · Audio · Deep learning',
         summary:
-          'Recherche et développement d’un système de reconnaissance vocale pour les essais en vol, de l’analyse audio aux modèles de deep learning.',
-        skills: ['Python', 'CNN', 'Traitement audio', 'Traitement de la parole'],
+          'Recherche et développement d’un système de reconnaissance vocale from scratch pour les essais en vol, de la collecte des données audio à la mise en place des modèles de deep learning.',
+        skills: ['Python', 'Convolutional neural networks', 'Tensorflow', 'Keras','Traitement du signal', 'Traitement de la parole'],
         experienceIndex: 2,
         tone: 'project-cyan',
         symbol: '〰',
@@ -231,26 +234,26 @@ const en: Translation = {
   profileName: 'Juliette Bergoënd',
   place: 'Besançon, France',
   profile: {
-    heading: 'Who am I?',
-    operatorLabel: 'Operator',
+    heading: 'WhoamI?',
+    operatorLabel: 'ID',
     roleLabel: 'Role',
     role: 'Software Engineer',
     locationLabel: 'Location',
     statusLabel: 'Status',
     status: 'Available',
     description:
-      'Software engineer specializing in Python, React, and language technology. I turn complex needs into reliable applications, from research to deployment.',
+      'I am a full-stack software engineer specializing in Python. I began my career in speech-processing research before moving into embedded application development. I love seeing ideas become practical solutions, and I value the constant learning this work brings every day. I enjoy taking on challenges and testing my determination.',
     mission:
-      'Connecting research and product to build practical, useful, and robust tools.',
+      'Turning complex business requirements into robust technical solutions. Currently focused on microservices and embedded applications.',
     terminalTitle: 'user_profile.log',
     whoamiCommand: 'whoami',
-    qualificationsCommand: 'cat qualifications.txt',
+    qualificationsCommand: 'cat mission.txt',
     expertiseHeading: 'Core expertise',
     experienceStat: 'Experience',
     experienceValue: '5+ yrs',
     projectsStat: 'Projects',
     projectsValue: '03',
-    educationStat: 'Plathéine',
+    educationStat: 'Platyine',
     educationValue: '∞',
     qualificationsHeading: 'Qualifications',
   },
@@ -320,8 +323,11 @@ const en: Translation = {
         summary:
           'Natural-language processing and speech recognition applied to flight tests.',
         details: [
-          'Reviewed speech-recognition methods and collected general and aviation audio corpora.',
-          'Processed audio and built a speech-recognition system from scratch in Python.',
+          'Reviewed state-of-the-art speech-recognition methods to build a system competitive with existing models. Developed it from scratch to protect the confidentiality of flight-test data.',
+          'Collected audio data by sourcing hundreds of hours of open-source recordings and manually transcribing flight-test audio.',
+          'Prepared audio signals for training through normalization, filtering, feature extraction, and dataset preparation.',
+          'Tested deep-learning models for speech recognition using CNN (Convolutional Neural Network) and RNN (Recurrent Neural Network) architectures.',
+          'Developed a speech-recognition system in Python.',
         ],
       },
     ],
@@ -337,11 +343,18 @@ const en: Translation = {
     entries: [
       {
         number: '01',
-        name: 'Aircraft speech recognition',
+        name: 'Aviation speech recognition',
         category: 'Flight tests · Audio · Deep learning',
         summary:
-          'Research and development of a speech-recognition system for flight tests, from audio analysis to deep-learning models.',
-        skills: ['Python', 'CNN', 'Audio processing', 'Speech processing'],
+          'Researched and built a speech-recognition system from scratch for flight tests, from collecting audio data to developing deep-learning models.',
+        skills: [
+          'Python',
+          'Convolutional neural networks',
+          'TensorFlow',
+          'Keras',
+          'Signal processing',
+          'Speech processing',
+        ],
         experienceIndex: 2,
         tone: 'project-cyan',
         symbol: '〰',

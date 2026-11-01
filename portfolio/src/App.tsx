@@ -232,14 +232,94 @@ function App() {
                 return (
                   <article className="project" data-reveal key={project.number}>
                     <div
-                      className={`project-visual ${project.tone}`}
+                      className={`project-visual ${project.tone}${project.number === '01' ? ' project-wavelet' : ''}`}
                       aria-label={`${project.name} — ${copy.projects.visualizationLabel}`}
                       role="img"
                     >
-                      <span className="project-symbol" aria-hidden="true">
-                        {project.symbol}
-                      </span>
-                      <span className="visual-number">{project.number}</span>
+                      {project.number === '01' ? (
+                        <svg
+                          className="cwt-chart"
+                          viewBox="0 0 800 340"
+                          preserveAspectRatio="none"
+                          aria-hidden="true"
+                        >
+                          <defs>
+                            <linearGradient id="cwt-background" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0" stopColor="#160d24" />
+                              <stop offset="1" stopColor="#090812" />
+                            </linearGradient>
+                            <linearGradient id="cwt-energy" x1="0" y1="0" x2="1" y2="0">
+                              <stop offset="0" stopColor="#7b3cff" />
+                              <stop offset=".35" stopColor="#21dcff" />
+                              <stop offset=".62" stopColor="#73f5a2" />
+                              <stop offset=".82" stopColor="#ffe06b" />
+                              <stop offset="1" stopColor="#ff8b45" />
+                            </linearGradient>
+                            <filter id="cwt-glow" x="-20%" y="-30%" width="140%" height="160%">
+                              <feGaussianBlur stdDeviation="9" />
+                            </filter>
+                            <clipPath id="cwt-plot-clip">
+                              <rect x="76" y="34" width="684" height="246" />
+                            </clipPath>
+                          </defs>
+                          <rect x="76" y="34" width="684" height="246" fill="url(#cwt-background)" />
+                          <g className="cwt-grid">
+                            <path d="M76 34H760 M76 75H760 M76 116H760 M76 157H760 M76 198H760 M76 239H760 M76 280H760" />
+                            <path d="M76 34V280 M213 34V280 M350 34V280 M487 34V280 M624 34V280 M760 34V280" />
+                          </g>
+                          <g clipPath="url(#cwt-plot-clip)">
+                            <path
+                              className="cwt-energy-glow"
+                              d="M76 203 C96 190 104 146 119 167 S145 221 162 188 183 122 199 154 220 222 239 186 260 126 275 163 300 225 319 177 340 117 354 151 378 220 395 183 413 136 430 170 454 225 474 182 492 106 506 145 529 214 546 178 563 127 582 161 602 211 619 174 638 111 652 149 672 212 688 169 708 126 727 160 744 195 760 171"
+                              fill="none"
+                              stroke="url(#cwt-energy)"
+                              strokeWidth="30"
+                              filter="url(#cwt-glow)"
+                            />
+                            <path
+                              className="cwt-energy-ridge"
+                              d="M76 203 C96 190 104 146 119 167 S145 221 162 188 183 122 199 154 220 222 239 186 260 126 275 163 300 225 319 177 340 117 354 151 378 220 395 183 413 136 430 170 454 225 474 182 492 106 506 145 529 214 546 178 563 127 582 161 602 211 619 174 638 111 652 149 672 212 688 169 708 126 727 160 744 195 760 171"
+                              fill="none"
+                              stroke="url(#cwt-energy)"
+                              strokeWidth="13"
+                            />
+                            <path
+                              d="M76 237 C115 226 127 207 151 219 S190 248 218 225 251 197 279 220 315 246 343 215 381 192 411 217 444 242 474 216 512 184 539 209 574 243 604 215 640 191 671 216 718 238 760 205"
+                              fill="none"
+                              stroke="#7b4cff"
+                              strokeWidth="18"
+                              opacity=".56"
+                              filter="url(#cwt-glow)"
+                            />
+                            <path
+                              d="M83 171V248 M94 152V227 M108 178V242 M127 130V225 M145 175V260 M170 166V234 M189 109V222 M210 151V253 M232 181V239 M252 137V224 M273 154V245 M296 190V258 M321 136V220 M344 109V237 M367 162V254 M389 188V244 M413 133V224 M438 162V254 M460 194V261 M483 145V223 M505 95V232 M529 153V246 M550 182V253 M575 123V224 M598 168V247 M620 185V261 M644 108V229 M666 147V249 M690 170V244 M715 129V229 M741 165V245"
+                              fill="none"
+                              stroke="#a78bff"
+                              strokeWidth="2"
+                              opacity=".48"
+                            />
+                          </g>
+                          <g className="cwt-axis-labels">
+                            <text x="76" y="302">0</text>
+                            <text x="410" y="302">TIME</text>
+                            <text x="748" y="302">10s</text>
+                            <text x="65" y="39">256</text>
+                            <text x="65" y="120">16</text>
+                            <text x="65" y="202">4</text>
+                            <text x="65" y="280">1</text>
+                            <text transform="translate(22 195) rotate(-90)">FREQUENCY (Hz)</text>
+                          </g>
+                          <text className="cwt-label" x="90" y="56">CONTINUOUS WAVELET TRANSFORM</text>
+                          <text className="cwt-number" x="735" y="266">{project.number}</text>
+                        </svg>
+                      ) : (
+                        <>
+                          <span className="project-symbol" aria-hidden="true">
+                            {project.symbol}
+                          </span>
+                          <span className="visual-number">{project.number}</span>
+                        </>
+                      )}
                     </div>
                     <div className="project-info">
                       <p className="project-type">{project.category}</p>

@@ -1959,6 +1959,66 @@ body.loading-active {
   color: #c6a0ff;
 }
 
+.project-wavelet {
+  min-height: 330px;
+  color: var(--cyan);
+  background: #090812;
+}
+
+.project-wavelet::before,
+.project-wavelet::after {
+  display: none;
+}
+
+.cwt-chart {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cwt-grid {
+  fill: none;
+  stroke: #bd75ff26;
+  stroke-width: 1;
+}
+
+.cwt-energy-glow {
+  opacity: 0.58;
+}
+
+.cwt-energy-ridge {
+  filter: drop-shadow(0 0 7px #54e6ffbd);
+}
+
+.cwt-axis-labels,
+.cwt-label,
+.cwt-number {
+  fill: #b7a3d4;
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
+.cwt-axis-labels text {
+  text-anchor: middle;
+}
+
+.cwt-axis-labels text:last-child {
+  fill: #75e7ff;
+  font-size: 9px;
+}
+
+.cwt-label {
+  fill: #e0c3ff;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.cwt-number {
+  fill: #c3a9dc;
+  text-anchor: end;
+}
+
 .project-symbol {
   width: 105px;
   height: 105px;
