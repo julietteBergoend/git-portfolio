@@ -329,6 +329,33 @@ function App() {
           </div>
         </section>
 
+        <section className="work-section section-wrap" id="skills">
+          <div className="section-heading" data-reveal>
+            <div>
+              <p className="eyebrow">{copy.skills.eyebrow}</p>
+              <h2>{copy.skills.heading}</h2>
+            </div>
+          </div>
+          <div className="skills-toolkit">
+            <h3>{copy.skills.toolkitHeading}</h3>
+            <div className="skills-category-grid">
+              {copy.skills.categories.map((category, index) => (
+                <article className="skills-category" key={category.title}>
+                  <div className="skills-category-heading">
+                    <span aria-hidden="true">0{index + 1}</span>
+                    <h4>{category.title}</h4>
+                  </div>
+                  <ul>
+                    {category.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="work-section section-wrap" id="experience">
           <div className="section-heading" data-reveal>
             <div>
@@ -376,33 +403,6 @@ function App() {
                 </div>
               </article>
             ))}
-          </div>
-        </section>
-
-        <section className="work-section section-wrap" id="skills">
-          <div className="section-heading" data-reveal>
-            <div>
-              <p className="eyebrow">{copy.skills.eyebrow}</p>
-              <h2>{copy.skills.heading}</h2>
-            </div>
-          </div>
-          <div className="skills-toolkit">
-            <h3>{copy.skills.toolkitHeading}</h3>
-            <div className="skills-category-grid">
-              {copy.skills.categories.map((category, index) => (
-                <article className="skills-category" key={category.title}>
-                  <div className="skills-category-heading">
-                    <span aria-hidden="true">0{index + 1}</span>
-                    <h4>{category.title}</h4>
-                  </div>
-                  <ul>
-                    {category.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
           </div>
         </section>
 

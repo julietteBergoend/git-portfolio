@@ -1166,14 +1166,20 @@
 
   .site-nav {
     width: 100%;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 8px 12px;
-    font-size: 12px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 5px;
+    font-size: clamp(9px, 2.7vw, 12px);
+  }
+
+  .site-nav > a:not(.nav-contact) {
+    white-space: nowrap;
   }
 
   .nav-contact {
-    padding: 9px 8px;
+    flex: 0 0 auto;
+    padding: 7px 5px;
+    white-space: nowrap;
   }
 
   .nav-contact span {
@@ -1181,8 +1187,9 @@
   }
 
   .language-toggle {
-    width: 29px;
-    height: 29px;
+    flex: 0 0 27px;
+    width: 27px;
+    height: 27px;
     font-size: 12px;
   }
 
