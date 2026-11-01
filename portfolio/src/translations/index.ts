@@ -42,6 +42,8 @@ const fr = {
     mainLabel: 'Navigation principale',
     experience: 'Parcours',
     expertise: 'Projets',
+    skills: 'Compétences',
+    education: 'Diplômes',
     contact: 'Me contacter',
     switchLanguage: 'Switch language to English',
     languageButton: 'EN',
@@ -180,6 +182,7 @@ const fr = {
   skills: {
     eyebrow: 'Compétences',
     heading: 'Outils & technologies',
+    toolkitHeading: 'Outils utilisés lors de mon parcours universitaire et professionnel',
     items: [
       { name: 'Python', level: 'Expert' },
       { name: 'React', level: 'Intermédiaire' },
@@ -190,10 +193,60 @@ const fr = {
       { name: 'Jenkins', level: 'Avancé' },
       { name: 'Claude', level: 'Expert' },
     ],
+    categories: [
+      {
+        title: 'Programmation',
+        items: ['Python', 'Java', 'JavaScript', 'PHP'],
+      },
+      {
+        title: 'Langages & outils web',
+        items: ['HTML5 · CSS3', 'Django', 'Flask','Tailwind', 'XML', 'Bootstrap', 'React'],
+      },
+      {
+        title: 'Outils de développement',
+        items: [
+          'Git',
+          'GitHub',
+          'Bitbucket',
+          'JIRA',
+          'Jenkins',
+          'Claude',
+        ],
+      },
+      {
+        title: 'Systèmes d’exploitation',
+        items: ['Linux'],
+      },
+      {
+        title: 'Traitement automatique des langues',
+        items: [
+          'SpaCy',
+          'NLTK',
+          'TreeTagger (Perl)',
+          'NooJ',
+          'Sphinx4',
+          'TXM',
+          'BERT',
+        ],
+      },
+      {
+        title: 'Autres outils',
+        items: [
+          'Anaconda',
+          'MySQL',
+          'OAI-PMH',
+          'Praat',
+          'Keras',
+          'TensorFlow',
+          'Prodigy',
+          'Gestion bureautique',
+        ],
+      },
+    ],
   },
   education: {
-    eyebrow: 'Formation',
-    heading: 'Apprendre, toujours.',
+    eyebrow: '',
+    heading: 'Diplômes',
     entries: [
       {
         period: '2018 — 2020',
@@ -278,6 +331,8 @@ const en: Translation = {
     mainLabel: 'Main navigation',
     experience: 'Experience',
     expertise: 'Expertise',
+    skills: 'Skills',
+    education: 'Education',
     contact: 'Get in touch',
     switchLanguage: 'Passer en français',
     languageButton: 'FR',
@@ -422,6 +477,7 @@ const en: Translation = {
   skills: {
     eyebrow: 'Skills',
     heading: 'Tools & technology',
+    toolkitHeading: 'Tools used throughout my academic and professional career',
     items: [
       { name: 'Python', level: 'Expert' },
       { name: 'React', level: 'Intermediate' },
@@ -432,10 +488,68 @@ const en: Translation = {
       { name: 'Jenkins', level: 'Advanced' },
       { name: 'Claude', level: 'Expert' },
     ],
+    categories: [
+      {
+        title: 'Programming',
+        items: ['Python', 'Java', 'JavaScript', 'PHP'],
+      },
+      {
+        title: 'Web languages & tools',
+        items: [
+          'HTML5 · CSS3',
+          'Django',
+          'Flask',
+          'Tailwind',
+          'XML',
+          'Bootstrap',
+          'React',
+        ],
+      },
+      {
+        title: 'Development tools',
+        items: [
+          'Git',
+          'GitHub',
+          'Bitbucket',
+          'JIRA',
+          'Jenkins',
+          'Claude',
+        ],
+      },
+      {
+        title: 'Operating systems',
+        items: ['Linux'],
+      },
+      {
+        title: 'Natural language processing',
+        items: [
+          'spaCy',
+          'NLTK',
+          'TreeTagger (Perl)',
+          'NooJ',
+          'Sphinx4',
+          'TXM',
+          'BERT',
+        ],
+      },
+      {
+        title: 'Other tools',
+        items: [
+          'Anaconda',
+          'MySQL',
+          'OAI-PMH',
+          'Praat',
+          'Keras',
+          'TensorFlow',
+          'Prodigy',
+          'Office software',
+        ],
+      },
+    ],
   },
   education: {
-    eyebrow: 'Education',
-    heading: 'Always learning.',
+    eyebrow: '',
+    heading: 'Education',
     entries: [
       {
         period: '2018 — 2020',

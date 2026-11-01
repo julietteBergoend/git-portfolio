@@ -350,6 +350,10 @@
   border-top: 1px solid var(--line);
 }
 
+.work-section#skills {
+  border-top: 0;
+}
+
 .section-heading {
   display: flex;
   align-items: flex-end;
@@ -854,27 +858,91 @@
   font-weight: 600;
 }
 
-.skills-list {
+.skills-toolkit > h3 {
+  margin: 0 0 16px;
+  color: #cbb8e2;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.skills-toolkit {
+  margin-top: 0;
+}
+
+.skills-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 16px;
+}
+
+.skills-category {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #49315f;
+  background: linear-gradient(145deg, #211431d9, #160e23e8);
+  box-shadow: inset 0 1px #e6c6ff0b;
+  transition: border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+
+.skills-category:hover {
+  transform: translateY(-3px);
+  border-color: #78539b;
+  box-shadow: 0 10px 24px #08051036, 0 0 18px #bd75ff18;
+}
+
+.skills-category-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #39264e;
+}
+
+.skills-category-heading > span {
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-shadow: 0 0 9px #75e7ff70;
+}
+
+.skills-category-heading h4 {
+  min-width: 0;
   margin: 0;
+  color: #e6d6f8;
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.skills-category ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
   padding: 0;
-  border-top: 1px solid var(--line);
   list-style: none;
 }
 
-.skills-list li {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 11px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 14px;
-}
-
-.skills-list li span:last-child {
-  color: var(--muted);
+.skills-category li {
+  max-width: 100%;
+  padding: 6px 9px;
+  border: 1px solid #52386b;
+  background: #bd75ff0b;
+  color: #d7c6ea;
   font-family: var(--mono);
   font-size: 12px;
-  text-align: right;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.skills-category li:hover {
+  border-color: var(--cyan);
+  background: #75e7ff12;
+  color: var(--cyan);
 }
 
 .education-item {
@@ -963,6 +1031,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-top: 1px solid var(--line);
   padding-top: 48px;
   padding-bottom: 48px;
   text-align: center;
@@ -1119,8 +1188,11 @@
   }
 
   .site-header {
+    flex-wrap: wrap;
+    row-gap: 10px;
     min-height: 70px;
     padding-inline: 20px;
+    padding-block: 12px;
   }
 
   .wordmark {
@@ -1134,8 +1206,11 @@
   }
 
   .site-nav {
-    gap: 11px;
-    font-size: 13px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 12px;
+    font-size: 12px;
   }
 
   .nav-contact {
@@ -1801,6 +1876,48 @@ body.loading-active {
   position: relative;
 }
 
+.work-section,
+.contact-section {
+  isolation: isolate;
+}
+
+.work-section::before,
+.contact-section::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  content: '';
+  pointer-events: none;
+}
+
+#experience::before {
+  background:
+    radial-gradient(ellipse at 18% 8%, #65338420, transparent 68%),
+    #140c21;
+}
+
+#skills::before {
+  background:
+    radial-gradient(ellipse at 82% 22%, #26718b19, transparent 68%),
+    #160d24;
+}
+
+#education::before {
+  background:
+    radial-gradient(ellipse at 24% 38%, #a65c3618, transparent 68%),
+    #130b20;
+}
+
+#contact::before {
+  background:
+    radial-gradient(ellipse at 68% 12%, #71469a22, transparent 68%),
+    #180e27;
+}
+
 .section-heading {
   align-items: flex-end;
 }
@@ -2260,26 +2377,6 @@ body.loading-active {
   color: #e5d7f5;
 }
 
-.skills-list {
-  border-color: #52366b;
-}
-
-.skills-list li {
-  border-color: #39264e;
-  color: #e0d2f1;
-  transition: color 180ms ease, padding 180ms ease, background 180ms ease;
-}
-
-.skills-list li:hover {
-  padding-inline: 8px;
-  background: #bd75ff0d;
-  color: var(--cyan);
-}
-
-.skills-list li span:last-child {
-  color: #aa94c2;
-}
-
 .education-item {
   border-color: var(--neon);
 }
@@ -2409,8 +2506,16 @@ button {
 
 @media (max-width: 620px) {
   .site-nav {
-    gap: 8px;
-    font-size: 13.5px;
+    gap: 8px 12px;
+    font-size: 12px;
+  }
+
+  .skills-toolkit {
+    margin-top: 0;
+  }
+
+  .skills-category {
+    padding: 15px;
   }
 
   .nav-contact {

@@ -136,6 +136,8 @@ function App() {
         <nav className="site-nav" aria-label={copy.navigation.mainLabel}>
           <a href="#expertise">{copy.navigation.expertise}</a>
           <a href="#experience">{copy.navigation.experience}</a>
+          <a href="#skills">{copy.navigation.skills}</a>
+          <a href="#education">{copy.navigation.education}</a>
           <a className="nav-contact" href="#contact">
             {copy.navigation.contact} <span aria-hidden="true">↗</span>
           </a>
@@ -402,7 +404,7 @@ function App() {
 
         <section className="publication-section" id="publications">
           <div className="publication-content section-wrap">
-            <div className="section-heading">
+            <div className="section-heading" data-reveal>
               <div>
                 <p className="eyebrow">{copy.publication.sectionEyebrow}</p>
                 <h2>{copy.publication.sectionHeading}</h2>
@@ -430,7 +432,7 @@ function App() {
         </section>
 
         <section className="work-section section-wrap" id="experience">
-          <div className="section-heading">
+          <div className="section-heading" data-reveal>
             <div>
               <p className="eyebrow">
                 {copy.experience.eyebrow}
@@ -479,11 +481,58 @@ function App() {
           </div>
         </section>
 
-        <section className="contact-section section-wrap" id="contact" data-reveal>
+        <section className="work-section section-wrap" id="skills">
+          <div className="section-heading" data-reveal>
+            <div>
+              <p className="eyebrow">{copy.skills.eyebrow}</p>
+              <h2>{copy.skills.heading}</h2>
+            </div>
+          </div>
+          <div className="skills-toolkit">
+            <h3>{copy.skills.toolkitHeading}</h3>
+            <div className="skills-category-grid">
+              {copy.skills.categories.map((category, index) => (
+                <article className="skills-category" key={category.title}>
+                  <div className="skills-category-heading">
+                    <span aria-hidden="true">0{index + 1}</span>
+                    <h4>{category.title}</h4>
+                  </div>
+                  <ul>
+                    {category.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="work-section section-wrap" id="education">
+          <div className="section-heading" data-reveal>
+            <div>
+              <p className="eyebrow">{copy.education.eyebrow}</p>
+              <h2>{copy.education.heading}</h2>
+            </div>
+          </div>
+          <div className="education-list">
+            {copy.education.entries.map((education) => (
+              <article className="education-item" key={education.degree}>
+                <p className="education-period">{education.period}</p>
+                <h4>{education.degree}</h4>
+                <p>
+                  {education.institution} <span>·</span> {education.location}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="contact-section section-wrap" id="contact">
           <p className="eyebrow">
             {copy.contact.eyebrow}
           </p>
-          <h2>
+          <h2 data-reveal>
             {copy.contact.heading}
           </h2>
           <p className="contact-intro">{copy.contact.intro}</p>
