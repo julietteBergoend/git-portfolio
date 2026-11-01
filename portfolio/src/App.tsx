@@ -117,7 +117,7 @@ function App() {
           <a href="#skills">{copy.navigation.skills}</a>
           <a href="#education">{copy.navigation.education}</a>
           <a className="nav-contact" href="#contact">
-            {copy.navigation.contact} <span aria-hidden="true">↗</span>
+            {copy.navigation.contact}
           </a>
           <button
             type="button"

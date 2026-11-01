@@ -75,10 +75,6 @@
   background: var(--accent);
 }
 
-.nav-contact span {
-  margin-left: 6px;
-}
-
 .language-toggle {
   width: 33px;
   height: 33px;
@@ -1180,10 +1176,6 @@
     flex: 0 0 auto;
     padding: 7px 5px;
     white-space: nowrap;
-  }
-
-  .nav-contact span {
-    margin-left: 2px;
   }
 
   .language-toggle {
@@ -2420,10 +2412,6 @@ button {
     flex: 0 0 auto;
     padding: 5px 3px;
     white-space: nowrap;
-  }
-
-  .nav-contact span {
-    margin-left: 1px;
   }
 
   .language-toggle {
