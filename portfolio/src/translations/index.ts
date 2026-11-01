@@ -62,7 +62,7 @@ const fr = {
     heading: 'Un parcours entre',
     headingEmphasis: 'recherche et produit.',
     aside:
-      'Des applications embarquées à la recherche en traitement du langage et de la parole.',
+      'De la recherche en traitement du langage et de la parole à la création d’applications embarquées.',
     entries: [
       {
         period: '08/2021 — présent',
@@ -72,10 +72,11 @@ const fr = {
         summary:
           'Développement d’applications embarquées pour le secteur du transport.',
         details: [
-          'Conception technique et développement avec Python et React.',
-          'Déploiement des applications sur le matériel avec Docker.',
+          'Conception technique et développement des applications avec Python et React.',
+          'Mise en place de la communication entre les microservices et les applications avec MQTT.',
+          'Déploiement des applications sur le matériel Linux avec Docker.',
           'Définition des spécifications techniques et de l’architecture applicative.',
-          'Maintenance, débogage, tests, validation et accompagnement client.',
+          'Maintenance, débogage, tests, validation, livraison et accompagnement client.',
         ],
       },
       {
@@ -117,6 +118,7 @@ const fr = {
     aside: 'Projets issus de mes expériences professionnelles',
     visualizationLabel: 'visualisation abstraite',
     dialogueVisualizationLabel: 'schéma du locuteur et de son destinataire',
+    embeddedVisualizationLabel: 'schéma de l’architecture, des applications et du déploiement embarqué',
     skillsLabel: 'Technologies et compétences',
     experienceDetailsLabel: 'Voir les détails de cette expérience',
     entries: [
@@ -133,16 +135,17 @@ const fr = {
       },
       {
         number: '02',
-        name: 'Annotation de séries TV',
-        category: 'TAL · Dialogue · Data collection · Reconnaissance d’entités',
+        name: 'Annotation de séries TV automatisée',
+        category: 'TAL · Dialogue · Data collection · Reconnaissance d’entités · Reconnaissance faciale',
         summary:
-          'Outils d’annotation et scripts Python pour explorer les dialogues, repérer des anomalies et structurer les échanges, dans un corpus de séries télévisées réunissant 1 638 épisodes, 7,584 millions de tokens et 399,4 d\'heures',
+          'Amélioration d\'outils d’annotation et scripts Python pour explorer les dialogues, repérer des anomalies et structurer les échanges, reconnaître des visages, dans un corpus de séries télévisées réunissant 1 638 épisodes, 7,584 millions de tokens et 399,4 d\'heures',
         skills: [
           'Prodigy',
           'Python',
           'Tensorflow',
           'Annotation de texte',
           'Entity linking',
+          'Reconnaissance faciale ',
           'Adressees',
           'SpaCy',
           'Flair'
@@ -154,7 +157,7 @@ const fr = {
       {
         number: '03',
         name: 'Systèmes embarqués',
-        category: 'Transport · Applications · Déploiement',
+        category: 'Transport · Applications · Microservices · LINUX',
         summary:
           'Applications embarquées pour le transport, de la conception technique au déploiement sur le matériel.',
         skills: [
@@ -163,8 +166,9 @@ const fr = {
           'Docker',
           'Microservices',
           'MQTT',
+          'Sqlite',
           'Nginx',
-          'Linux',
+          'LINUX',
           'Frameworks métier',
         ],
         experienceIndex: 0,
@@ -206,7 +210,8 @@ const fr = {
     ],
   },
   publication: {
-    eyebrow: 'Publication',
+    sectionEyebrow: 'Recherche',
+    sectionHeading: 'Publications',
     title: 'Bazinga! A Dataset for Multi-Party Dialogues Structuring',
     authors: 'Paul Lerner, Juliette Bergoënd et al.',
     venue: 'LREC 2022',
@@ -216,8 +221,8 @@ const fr = {
     link: 'Lire la publication',
   },
   contact: {
-    eyebrow: 'Un projet en tête ?',
-    heading: 'Parlons-en.',
+    eyebrow: '',
+    heading: 'Un projet en tête ?',
     intro: 'Curieuse de découvrir votre prochain défi.',
     email: 'juliette.bergoend.pr@gmail.com',
     github: 'GitHub',
@@ -293,7 +298,7 @@ const en: Translation = {
     heading: 'A path across',
     headingEmphasis: 'research and product.',
     aside:
-      'From embedded applications to language and speech technology research.',
+      'From language and speech research to building embedded applications.',
     entries: [
       {
         period: '08/2021 — Present',
@@ -302,10 +307,11 @@ const en: Translation = {
         location: 'Besançon',
         summary: 'Developing embedded applications for the transport sector.',
         details: [
-          'Technical design and application development with Python and React.',
-          'Deploying applications to hardware with Docker.',
+          'Technical design and development of applications with Python and React.',
+          'Set up communication between microservices and applications using MQTT.',
+          'Deployed applications to Linux hardware with Docker.',
           'Defining technical specifications and application architecture.',
-          'Maintenance, debugging, testing, validation, and client support.',
+          'Maintenance, debugging, testing, validation, delivery, and client support.',
         ],
       },
       {
@@ -347,6 +353,7 @@ const en: Translation = {
     aside: 'A few areas and outcomes drawn from my experience.',
     visualizationLabel: 'abstract visualization',
     dialogueVisualizationLabel: 'diagram of the speaker and addressee',
+    embeddedVisualizationLabel: 'diagram of the architecture, applications, and embedded deployment',
     skillsLabel: 'Tools and skills',
     experienceDetailsLabel: 'View experience details',
     entries: [
@@ -370,16 +377,17 @@ const en: Translation = {
       },
       {
         number: '02',
-        name: 'TV series annotation',
-        category: 'NLP · Dialogue · Data collection · Entity recognition',
+        name: 'Automated TV series annotation',
+        category: 'NLP · Dialogue · Data collection · Entity recognition · Facial recognition',
         summary:
-          'Annotation tools and Python scripts to explore dialogue, detect anomalies, and structure conversations across a TV-series corpus of 1,638 episodes, 7.584 million tokens, and 399.4 hours.',
+          'Improved annotation tools and Python scripts to explore dialogue, detect anomalies, structure conversations, and recognize faces across a TV-series corpus of 1,638 episodes, 7.584 million tokens, and 399.4 hours.',
         skills: [
           'Prodigy',
           'Python',
           'TensorFlow',
           'Text annotation',
           'Entity linking',
+          'Facial recognition',
           'Addressees',
           'spaCy',
           'Flair',
@@ -391,7 +399,7 @@ const en: Translation = {
       {
         number: '03',
         name: 'Embedded systems',
-        category: 'Transport · Applications · Deployment',
+        category: 'Transport · Applications · Microservices · Linux',
         summary:
           'Embedded applications for transport, from technical design through deployment to hardware.',
         skills: [
@@ -400,6 +408,7 @@ const en: Translation = {
           'Docker',
           'Microservices',
           'MQTT',
+          'SQLite',
           'Nginx',
           'Linux',
           'Corporate frameworks',
@@ -443,7 +452,8 @@ const en: Translation = {
     ],
   },
   publication: {
-    eyebrow: 'Publication',
+    sectionEyebrow: 'Research',
+    sectionHeading: 'Publications',
     title: 'Bazinga! A Dataset for Multi-Party Dialogues Structuring',
     authors: 'Paul Lerner, Juliette Bergoënd et al.',
     venue: 'LREC 2022',
@@ -453,8 +463,8 @@ const en: Translation = {
     link: 'Read the paper',
   },
   contact: {
-    eyebrow: 'Have a project in mind?',
-    heading: 'Let’s talk.',
+    eyebrow: '',
+    heading: 'Have a project in mind?',
     intro: 'Curious to hear about your next challenge.',
     email: 'juliette.bergoend.pr@gmail.com',
     github: 'GitHub',

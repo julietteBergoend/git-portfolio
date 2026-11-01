@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import dialogueAddressing from './assets/dialogue-addressing.svg'
+import embeddedSystems from './assets/embedded-systems.svg'
 import platyFace from './assets/platy-glasses-transparent.png'
 import platypusImage from './assets/platy-contours.svg'
 import { translations, type Language } from './translations'
@@ -247,8 +248,8 @@ function App() {
                 return (
                   <article className="project" data-reveal key={project.number}>
                     <div
-                      className={`project-visual ${project.tone}${project.number === '01' ? ' project-wavelet' : ''}${project.number === '02' ? ' project-dialogue' : ''}`}
-                      aria-label={`${project.name} — ${project.number === '02' ? copy.projects.dialogueVisualizationLabel : copy.projects.visualizationLabel}`}
+                      className={`project-visual ${project.tone}${project.number === '01' ? ' project-wavelet' : ''}${project.number === '02' ? ' project-dialogue' : ''}${project.number === '03' ? ' project-embedded' : ''}`}
+                      aria-label={`${project.name} — ${project.number === '02' ? copy.projects.dialogueVisualizationLabel : project.number === '03' ? copy.projects.embeddedVisualizationLabel : copy.projects.visualizationLabel}`}
                       role="img"
                     >
                       {project.number === '01' ? (
@@ -329,6 +330,8 @@ function App() {
                         </svg>
                       ) : project.number === '02' ? (
                         <img className="dialogue-diagram" src={dialogueAddressing} alt="" />
+                      ) : project.number === '03' ? (
+                        <img className="embedded-diagram" src={embeddedSystems} alt="" />
                       ) : (
                         <>
                           <span className="project-symbol" aria-hidden="true">
@@ -356,7 +359,17 @@ function App() {
                             (project.number === '02' &&
                               ['python', 'spacy', 'flair', 'tensorflow'].includes(
                                 normalizedSkill,
-                              ))
+                              )) ||
+                            (project.number === '03' &&
+                              [
+                                'python',
+                                'react',
+                                'docker',
+                                'nginx',
+                                'linux',
+                                'mqtt',
+                                'sqlite',
+                              ].includes(normalizedSkill))
 
                           return (
                             <li
@@ -384,6 +397,35 @@ function App() {
                 )
               })}
             </div>
+          </div>
+        </section>
+
+        <section className="publication-section" id="publications">
+          <div className="publication-content section-wrap">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">{copy.publication.sectionEyebrow}</p>
+                <h2>{copy.publication.sectionHeading}</h2>
+              </div>
+            </div>
+            <article className="publication-inner">
+              <span className="publication-mark" aria-hidden="true">“</span>
+              <div>
+                <h3>{copy.publication.title}</h3>
+                <p className="publication-meta">
+                  {copy.publication.authors} <span>·</span> {copy.publication.venue}
+                </p>
+                <p className="publication-summary">{copy.publication.summary}</p>
+              </div>
+              <a
+                className="publication-link"
+                href={copy.publication.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {copy.publication.link} <ArrowIcon />
+              </a>
+            </article>
           </div>
         </section>
 
@@ -422,7 +464,6 @@ function App() {
                         {job.company} <span>·</span> {job.location}
                       </p>
                     </div>
-                    <span className="experience-arrow" aria-hidden="true">↗</span>
                   </div>
                   <p className="experience-summary">
                     {job.summary}
@@ -435,28 +476,6 @@ function App() {
                 </div>
               </article>
             ))}
-          </div>
-        </section>
-
-        <section className="publication-section">
-          <div className="publication-inner section-wrap" data-reveal>
-            <span className="publication-mark" aria-hidden="true">“</span>
-            <div>
-              <p className="eyebrow">{copy.publication.eyebrow}</p>
-              <h2>{copy.publication.title}</h2>
-              <p className="publication-meta">
-                {copy.publication.authors} <span>·</span> {copy.publication.venue}
-              </p>
-              <p className="publication-summary">{copy.publication.summary}</p>
-            </div>
-            <a
-              className="publication-link"
-              href={copy.publication.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {copy.publication.link} <ArrowIcon />
-            </a>
           </div>
         </section>
 
@@ -481,7 +500,6 @@ function App() {
               {copy.contact.github} <ArrowIcon />
             </a>
           </div>
-          <span className="contact-doodle" aria-hidden="true">✳</span>
         </section>
       </main>
 

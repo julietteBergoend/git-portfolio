@@ -346,7 +346,7 @@
 
 .work-section {
   padding-top: 102px;
-  padding-bottom: 110px;
+  padding-bottom: 65px;
   border-top: 1px solid var(--line);
 }
 
@@ -897,14 +897,19 @@
   background: #f0efe9;
 }
 
+.publication-content {
+  padding-top: 100px;
+  padding-bottom: 105px;
+}
+
 .publication-inner {
   position: relative;
   display: grid;
   grid-template-columns: 52px 1fr auto;
   align-items: center;
   gap: 20px;
-  padding-top: 46px;
-  padding-bottom: 46px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
 }
 
 .publication-mark {
@@ -915,7 +920,7 @@
   line-height: 0.9;
 }
 
-.publication-inner h2 {
+.publication-inner h3 {
   max-width: 590px;
   margin: 8px 0 10px;
   font-size: 20px;
@@ -953,13 +958,13 @@
 
 .contact-section {
   position: relative;
-  min-height: 410px;
+  min-height: 330px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding-top: 48px;
+  padding-bottom: 48px;
   text-align: center;
 }
 
@@ -1217,7 +1222,8 @@
   }
 
   .work-section,
-  .projects-inner {
+  .projects-inner,
+  .publication-content {
     padding-top: 74px;
     padding-bottom: 79px;
   }
@@ -1346,15 +1352,14 @@
   .publication-inner {
     grid-template-columns: 31px 1fr;
     gap: 13px;
-    padding-top: 38px;
-    padding-bottom: 38px;
+    padding-top: 24px;
   }
 
   .publication-mark {
     font-size: 54px;
   }
 
-  .publication-inner h2 {
+  .publication-inner h3 {
     font-size: 17px;
   }
 
@@ -1365,9 +1370,9 @@
   }
 
   .contact-section {
-    min-height: 345px;
-    padding-top: 65px;
-    padding-bottom: 65px;
+    min-height: 290px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   .contact-section h2 {
@@ -1670,7 +1675,6 @@ body.loading-active {
 
 .hero h1,
 .section-heading h2,
-.publication-inner h2,
 .contact-section h2,
 .experience-heading h3,
 .project-info h3,
@@ -1976,7 +1980,21 @@ body.loading-active {
   display: none;
 }
 
+.project-embedded::before,
+.project-embedded::after {
+  display: none;
+}
+
 .dialogue-diagram {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(100%, 800px);
+  height: auto;
+  max-height: 300px;
+}
+
+.embedded-diagram {
   position: relative;
   z-index: 1;
   display: block;
@@ -2276,7 +2294,7 @@ body.loading-active {
   text-shadow: 0 0 14px #75e7ff75;
 }
 
-.publication-inner h2 {
+.publication-inner h3 {
   color: #ebdcff;
   font-family: var(--display);
 }
