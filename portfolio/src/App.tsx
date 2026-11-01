@@ -430,7 +430,7 @@ function App() {
         </section>
 
         <section className="work-section section-wrap" id="experience">
-          <div className="section-heading" data-reveal>
+          <div className="section-heading">
             <div>
               <p className="eyebrow">
                 {copy.experience.eyebrow}
@@ -448,7 +448,7 @@ function App() {
 
           <div className="experience-list">
             {copy.experience.entries.map((job, index) => (
-              <article className="experience-item" data-reveal key={job.company}>
+              <article className="experience-item" key={job.company}>
                 <div className="experience-index">
                   <span>0{index + 1}</span>
                   <span className="timeline-line" />
