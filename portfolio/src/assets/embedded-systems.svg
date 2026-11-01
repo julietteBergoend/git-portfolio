@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" fill="none">
+  <defs>
+    <linearGradient id="architecture" x1="120" y1="105" x2="285" y2="255" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#75E7FF"/>
+      <stop offset="1" stop-color="#C9A7FF"/>
+    </linearGradient>
+    <linearGradient id="application" x1="326" y1="90" x2="475" y2="255" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C9A7FF"/>
+      <stop offset="1" stop-color="#EF8BFF"/>
+    </linearGradient>
+    <linearGradient id="hardware" x1="536" y1="105" x2="695" y2="255" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EF8BFF"/>
+      <stop offset="1" stop-color="#75E7FF"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="275" y1="190" x2="529" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#75E7FF"/>
+      <stop offset=".5" stop-color="#C9A7FF"/>
+      <stop offset="1" stop-color="#EF8BFF"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="soft-glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M1 1L10 6L1 11" stroke="#EF8BFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </marker>
+  </defs>
+
+  <g stroke="#D5A5FF" stroke-opacity=".09">
+    <path d="M0 85H800M0 170H800M0 255H800"/>
+    <path d="M100 0V340M200 0V340M300 0V340M400 0V340M500 0V340M600 0V340M700 0V340"/>
+  </g>
+
+  <path d="M278 190H520" stroke="url(#flow)" stroke-linecap="round" stroke-width="3" filter="url(#soft-glow)" marker-end="url(#arrow)"/>
+  <path d="M478 190H522" stroke="#EF8BFF" stroke-linecap="round" stroke-width="3" filter="url(#soft-glow)" marker-end="url(#arrow)"/>
+
+  <g filter="url(#glow)">
+    <rect x="122" y="106" width="154" height="148" rx="14" fill="#160D24" stroke="url(#architecture)" stroke-width="2"/>
+    <path d="M146 138H187V174H146zM211 138H252V174H211zM178 192H220V228H178z" stroke="#75E7FF" stroke-opacity=".86" stroke-width="2"/>
+    <path d="M187 156H211M199 174V192M146 156H137V204H178M252 156H261V204H220" stroke="#C9A7FF" stroke-linecap="round" stroke-width="2"/>
+    <circle cx="166.5" cy="156" r="4" fill="#75E7FF"/>
+    <circle cx="231.5" cy="156" r="4" fill="#75E7FF"/>
+    <circle cx="199" cy="210" r="4" fill="#EF8BFF"/>
+  </g>
+
+  <g filter="url(#glow)">
+    <rect x="326" y="91" width="150" height="50" rx="10" fill="#1B102B" stroke="url(#application)" stroke-width="2"/>
+    <rect x="326" y="207" width="150" height="50" rx="10" fill="#1B102B" stroke="url(#application)" stroke-width="2"/>
+    <path d="M346 108H366V124H346zM346 224H366V240H346z" stroke="#C9A7FF" stroke-width="2"/>
+    <path d="M351 116H361M356 111V121M351 232H361M356 227V237" stroke="#75E7FF" stroke-linecap="round" stroke-width="1.5"/>
+    <path d="M380 111H452M380 123H433M380 227H452M380 239H433" stroke="#C9A7FF" stroke-linecap="round" stroke-opacity=".7" stroke-width="2"/>
+  </g>
+  <g stroke="#EF8BFF" stroke-linecap="round" stroke-width="2" filter="url(#soft-glow)">
+    <path d="M401 145V159M401 189V203"/>
+    <path d="M382 166C392 157 410 157 420 166M389 174C396 168 406 168 413 174"/>
+  </g>
+  <circle cx="401" cy="181" r="3" fill="#75E7FF" filter="url(#soft-glow)"/>
+
+  <g filter="url(#glow)">
+    <rect x="536" y="106" width="158" height="148" rx="14" fill="#160D24" stroke="url(#hardware)" stroke-width="2"/>
+    <rect x="562" y="131" width="106" height="68" rx="7" stroke="#EF8BFF" stroke-width="2"/>
+    <path d="M573 185L594 163L609 175L628 149L657 178" stroke="#75E7FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path d="M596 213H634M615 199V213M584 228H646" stroke="#C9A7FF" stroke-linecap="round" stroke-width="2"/>
+    <circle cx="654" cy="145" r="3" fill="#75E7FF"/>
+  </g>
+</svg>

@@ -1,21 +1,11 @@
 import { useEffect, useState } from 'react'
+import dialogueAddressing from './assets/dialogue-addressing.svg'
+import embeddedSystems from './assets/embedded-systems.svg'
 import platyFace from './assets/platy-glasses-transparent.png'
 import platypusImage from './assets/platy-contours.svg'
+import waveletChart from './assets/wavelet-chart.svg'
 import { translations, type Language } from './translations'
 import './App.css'
-
-function ArrowIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="arrow-icon"
-      viewBox="0 0 20 20"
-      fill="none"
-    >
-      <path d="M4.5 10h10m-4-4 4 4-4 4" />
-    </svg>
-  )
-}
 
 function App() {
   const [language, setLanguage] = useState<Language>('fr')
@@ -47,6 +37,20 @@ function App() {
       document.body.classList.remove('loading-active')
     }
   }, [])
+
+  useEffect(() => {
+    if (isLoading) {
+      return
+    }
+
+    const navigation = performance.getEntriesByType(
+      'navigation',
+    )[0] as PerformanceNavigationTiming | undefined
+
+    if (navigation?.type === 'reload') {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
+  }, [isLoading])
 
   useEffect(() => {
     document.documentElement.lang = language
@@ -107,19 +111,11 @@ function App() {
         inert={isLoading}
       >
       <header className="site-header">
-        <a
-          className="wordmark"
-          href="#home"
-          aria-label={copy.navigation.homeLabel}
-        >
-          <span className="wordmark-mark">
-            <img className="wordmark-platy" src={platyFace} alt="" />
-          </span>
-          <span>{copy.profileName}</span>
-        </a>
         <nav className="site-nav" aria-label={copy.navigation.mainLabel}>
           <a href="#expertise">{copy.navigation.expertise}</a>
           <a href="#experience">{copy.navigation.experience}</a>
+          <a href="#skills">{copy.navigation.skills}</a>
+          <a href="#education">{copy.navigation.education}</a>
           <a className="nav-contact" href="#contact">
             {copy.navigation.contact} <span aria-hidden="true">↗</span>
           </a>
@@ -140,6 +136,7 @@ function App() {
           <div className="profile-left">
             <h1 className="profile-heading" data-reveal>{copy.profile.heading}</h1>
             <div className="profile-card" data-reveal>
+              <img className="profile-platy-icon" src={platyFace} alt="" />
               <div className="profile-facts">
                 <div className="profile-fact">
                   <span>{copy.profile.operatorLabel}</span>
@@ -232,14 +229,17 @@ function App() {
                 return (
                   <article className="project" data-reveal key={project.number}>
                     <div
-                      className={`project-visual ${project.tone}`}
-                      aria-label={`${project.name} — ${copy.projects.visualizationLabel}`}
+                      className={`project-visual ${project.tone}${project.number === '01' ? ' project-wavelet' : ''}${project.number === '02' ? ' project-dialogue' : ''}${project.number === '03' ? ' project-embedded' : ''}`}
+                      aria-label={`${project.name} — ${project.number === '02' ? copy.projects.dialogueVisualizationLabel : project.number === '03' ? copy.projects.embeddedVisualizationLabel : copy.projects.visualizationLabel}`}
                       role="img"
                     >
-                      <span className="project-symbol" aria-hidden="true">
-                        {project.symbol}
-                      </span>
-                      <span className="visual-number">{project.number}</span>
+                      {project.number === '01' ? (
+                        <img className="cwt-chart" src={waveletChart} alt="" />
+                      ) : project.number === '02' ? (
+                        <img className="dialogue-diagram" src={dialogueAddressing} alt="" />
+                      ) : project.number === '03' ? (
+                        <img className="embedded-diagram" src={embeddedSystems} alt="" />
+                      ) : null}
                     </div>
                     <div className="project-info">
                       <p className="project-type">{project.category}</p>
@@ -249,9 +249,37 @@ function App() {
                         className="project-skills"
                         aria-label={copy.projects.skillsLabel}
                       >
-                        {project.skills.map((skill) => (
-                          <li key={skill}>{skill}</li>
-                        ))}
+                        {project.skills.map((skill) => {
+                          const normalizedSkill = skill.toLowerCase()
+                          const isNeonSkill =
+                            (project.number === '01' &&
+                              ['python', 'keras', 'tensorflow'].includes(
+                                normalizedSkill,
+                              )) ||
+                            (project.number === '02' &&
+                              ['python', 'spacy', 'flair', 'tensorflow'].includes(
+                                normalizedSkill,
+                              )) ||
+                            (project.number === '03' &&
+                              [
+                                'python',
+                                'react',
+                                'docker',
+                                'nginx',
+                                'linux',
+                                'mqtt',
+                                'sqlite',
+                              ].includes(normalizedSkill))
+
+                          return (
+                            <li
+                              className={isNeonSkill ? 'project-skill-neon' : undefined}
+                              key={skill}
+                            >
+                              {skill}
+                            </li>
+                          )
+                        })}
                       </ul>
                       <details className="project-details">
                         <summary>{copy.projects.experienceDetailsLabel}</summary>
@@ -269,6 +297,35 @@ function App() {
                 )
               })}
             </div>
+          </div>
+        </section>
+
+        <section className="publication-section" id="publications">
+          <div className="publication-content section-wrap">
+            <div className="section-heading" data-reveal>
+              <div>
+                <p className="eyebrow">{copy.publication.sectionEyebrow}</p>
+                <h2>{copy.publication.sectionHeading}</h2>
+              </div>
+            </div>
+            <article className="publication-inner">
+              <span className="publication-mark" aria-hidden="true">“</span>
+              <div>
+                <h3>{copy.publication.title}</h3>
+                <p className="publication-meta">
+                  {copy.publication.authors} <span>·</span> {copy.publication.venue}
+                </p>
+                <p className="publication-summary">{copy.publication.summary}</p>
+              </div>
+              <a
+                className="publication-link"
+                href={copy.publication.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {copy.publication.link} <span aria-hidden="true" className="arrow-icon" />
+              </a>
+            </article>
           </div>
         </section>
 
@@ -291,7 +348,7 @@ function App() {
 
           <div className="experience-list">
             {copy.experience.entries.map((job, index) => (
-              <article className="experience-item" data-reveal key={job.company}>
+              <article className="experience-item" key={job.company}>
                 <div className="experience-index">
                   <span>0{index + 1}</span>
                   <span className="timeline-line" />
@@ -307,7 +364,6 @@ function App() {
                         {job.company} <span>·</span> {job.location}
                       </p>
                     </div>
-                    <span className="experience-arrow" aria-hidden="true">↗</span>
                   </div>
                   <p className="experience-summary">
                     {job.summary}
@@ -323,39 +379,64 @@ function App() {
           </div>
         </section>
 
-        <section className="publication-section">
-          <div className="publication-inner section-wrap" data-reveal>
-            <span className="publication-mark" aria-hidden="true">“</span>
+        <section className="work-section section-wrap" id="skills">
+          <div className="section-heading" data-reveal>
             <div>
-              <p className="eyebrow">{copy.publication.eyebrow}</p>
-              <h2>{copy.publication.title}</h2>
-              <p className="publication-meta">
-                {copy.publication.authors} <span>·</span> {copy.publication.venue}
-              </p>
-              <p className="publication-summary">{copy.publication.summary}</p>
+              <p className="eyebrow">{copy.skills.eyebrow}</p>
+              <h2>{copy.skills.heading}</h2>
             </div>
-            <a
-              className="publication-link"
-              href={copy.publication.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {copy.publication.link} <ArrowIcon />
-            </a>
+          </div>
+          <div className="skills-toolkit">
+            <h3>{copy.skills.toolkitHeading}</h3>
+            <div className="skills-category-grid">
+              {copy.skills.categories.map((category, index) => (
+                <article className="skills-category" key={category.title}>
+                  <div className="skills-category-heading">
+                    <span aria-hidden="true">0{index + 1}</span>
+                    <h4>{category.title}</h4>
+                  </div>
+                  <ul>
+                    {category.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="contact-section section-wrap" id="contact" data-reveal>
+        <section className="work-section section-wrap" id="education">
+          <div className="section-heading" data-reveal>
+            <div>
+              <p className="eyebrow">{copy.education.eyebrow}</p>
+              <h2>{copy.education.heading}</h2>
+            </div>
+          </div>
+          <div className="education-list">
+            {copy.education.entries.map((education) => (
+              <article className="education-item" key={education.degree}>
+                <p className="education-period">{education.period}</p>
+                <h4>{education.degree}</h4>
+                <p>
+                  {education.institution} <span>·</span> {education.location}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="contact-section section-wrap" id="contact">
           <p className="eyebrow">
             {copy.contact.eyebrow}
           </p>
-          <h2>
+          <h2 data-reveal>
             {copy.contact.heading}
           </h2>
           <p className="contact-intro">{copy.contact.intro}</p>
           <div className="contact-links">
             <a className="contact-link" href={`mailto:${copy.contact.email}`}>
-              {copy.contact.email} <ArrowIcon />
+              {copy.contact.email} <span aria-hidden="true" className="arrow-icon" />
             </a>
             <a
               className="contact-link"
@@ -363,10 +444,9 @@ function App() {
               target="_blank"
               rel="noreferrer"
             >
-              {copy.contact.github} <ArrowIcon />
+              {copy.contact.github} <span aria-hidden="true" className="arrow-icon" />
             </a>
           </div>
-          <span className="contact-doodle" aria-hidden="true">✳</span>
         </section>
       </main>
 
