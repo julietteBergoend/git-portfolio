@@ -35,7 +35,7 @@ const fr = {
   loader: {
     label: 'Une petite seconde, on prépare la page',
     caption: 'Une petite seconde…',
-    subcaption: 'On prépare la page',
+    subcaption: 'Platy prépare la page...'
   },
   navigation: {
     homeLabel: 'Juliette Bergoënd — accueil',
@@ -324,7 +324,7 @@ const en: Translation = {
   loader: {
     label: 'One moment, getting the page ready',
     caption: 'Just a little second…',
-    subcaption: 'Getting things ready',
+    subcaption: 'Platy is cooking the page...'
   },
   navigation: {
     homeLabel: 'Juliette Bergoënd — home',

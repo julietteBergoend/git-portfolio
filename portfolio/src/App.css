@@ -12,7 +12,7 @@
   min-height: 84px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding-inline: max(48px, calc((100% - 1120px) / 2));
   border-bottom: 1px solid var(--line);
 }
@@ -639,8 +639,11 @@
   flex: 1;
   min-height: 320px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 24px 30px;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 30px;
   border: 1px solid #49345c;
   border-radius: 5px;
   background:
@@ -666,7 +669,6 @@
 
 .profile-facts {
   display: grid;
-  min-height: 260px;
   grid-template-rows: repeat(4, 1fr);
   width: 100%;
   border-top: 1px solid #39264e;
@@ -677,7 +679,7 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 16px;
-  padding: 18px 0;
+  padding: 10px 0;
   border-bottom: 1px solid #39264e;
 }
 
@@ -778,6 +780,15 @@
   font-family: var(--mono);
   font-size: 14px;
   line-height: 1.75;
+}
+
+.profile-platy-icon {
+  flex: 0 0 88px;
+  width: 88px;
+  height: 88px;
+  margin-inline: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px #c389ff80);
 }
 
 .terminal-mission {
@@ -1208,7 +1219,7 @@
   .site-nav {
     width: 100%;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 8px 12px;
     font-size: 12px;
   }
@@ -1376,16 +1387,12 @@
 
   .profile-card {
     min-height: 280px;
-    padding: 23px 20px;
-  }
-
-  .profile-facts {
-    min-height: 230px;
+    padding: 12px 20px;
   }
 
   .profile-fact {
     gap: 10px;
-    padding-block: 14px;
+    padding-block: 6px;
   }
 
   .profile-fact span {
@@ -1533,6 +1540,7 @@
 .platypus-art {
   width: 100%;
   height: auto;
+  margin-bottom: 12px;
   overflow: visible;
   filter: drop-shadow(0 0 16px #bf72ff42);
   animation: platypus-spin 900ms cubic-bezier(0.45, 0, 0.2, 1) both;

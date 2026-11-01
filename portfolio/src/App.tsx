@@ -123,16 +123,6 @@ function App() {
         inert={isLoading}
       >
       <header className="site-header">
-        <a
-          className="wordmark"
-          href="#home"
-          aria-label={copy.navigation.homeLabel}
-        >
-          <span className="wordmark-mark">
-            <img className="wordmark-platy" src={platyFace} alt="" />
-          </span>
-          <span>{copy.profileName}</span>
-        </a>
         <nav className="site-nav" aria-label={copy.navigation.mainLabel}>
           <a href="#expertise">{copy.navigation.expertise}</a>
           <a href="#experience">{copy.navigation.experience}</a>
@@ -158,6 +148,7 @@ function App() {
           <div className="profile-left">
             <h1 className="profile-heading" data-reveal>{copy.profile.heading}</h1>
             <div className="profile-card" data-reveal>
+              <img className="profile-platy-icon" src={platyFace} alt="" />
               <div className="profile-facts">
                 <div className="profile-fact">
                   <span>{copy.profile.operatorLabel}</span>
